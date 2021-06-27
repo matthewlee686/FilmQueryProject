@@ -75,7 +75,11 @@ public class Actor {
 
 	@Override
 	public String toString() {
-		return "Actor [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + "]";
+		return "  Actor\n"
+		        + "------------- \n" 
+				+ "ID: " + id + "\n"
+				+ "First Name: " + firstName + "\n"
+				+ "Last Name: " + lastName + "\n\n";
 	}
 	
 
