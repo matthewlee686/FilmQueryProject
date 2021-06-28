@@ -78,6 +78,5 @@ public class Actor {
 	public String toString() {
 		return "Actor: " + firstName + " " + lastName + "\n";
 	}
-	
 
 }
