@@ -1,5 +1,8 @@
 package com.skilldistillery.filmquery.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Film {
 	private int id; 
 	private String title;
@@ -7,14 +10,24 @@ public class Film {
 	private String rating;
 	private String description; 
 	private String language; 
+	List<Actor> actors = new ArrayList<>();
 
-	
 	//Fields above
 	
 	public Film() {
 		
 	}
 
+	public Film(String title, short releaseYear, String rating, String description, String language, List<Actor> actors) {
+		super();
+		this.title = title;
+		this.releaseYear = releaseYear;
+		this.rating = rating;
+		this.description = description;
+		this.language = language;
+		this.actors = actors;
+	}
+	
 	public Film(String title, short releaseYear, String rating, String description, String language) {
 		super();
 		this.title = title;
@@ -75,7 +88,7 @@ public class Film {
 
 	@Override
 	public String toString() {
-		return    "\nFilm\n"
+		return    "\nFilm:\n"
 				+ "----\n" 
 //				+ "ID: " + id + "\n" 
 				+ "Title: " + title + "\n" 
@@ -83,7 +96,12 @@ public class Film {
 				+ "Rating: " + rating + "\n"
 				+ "Description: " + description + "\n" 
 				+ "Language: " + language + "\n"
-				+ "===================================\n";
+				+ "=============================================\n"
+				+ "Starring:"
+				+ "\n---------\n"
+				+ actors
+				+ "\nThere are: " + actors.size() + " Actor(s) in this Film\n"
+				+ "=============================================\n";
 	}
 
 	@Override

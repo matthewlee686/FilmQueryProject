@@ -1,6 +1,7 @@
 package com.skilldistillery.filmquery.app;
 
 import java.sql.SQLException;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -20,18 +21,23 @@ public class FilmQueryApp {
   private void launch() throws SQLException {
     Scanner input = new Scanner(System.in);
     
-    startUserInterface(input);
+    try {
+    	startUserInterface(input);
+    } catch (InputMismatchException e) {
+    	System.out.println("Invalid Input");
+    }
     
     input.close();
+    
+    System.out.println("Thank you for using Film Query!");
   }
 
   private void startUserInterface(Scanner input) throws SQLException {
 	  
-	  
 	  int choice;
 	  int filmId;
-    
-	   do {
+
+		  do {
 		   
 		   System.out.println("           Menu");
 		   System.out.println("---------------------------");
@@ -40,7 +46,7 @@ public class FilmQueryApp {
 		   System.out.println("3.) Exit");
 		   System.out.print("\nEnter choice here: ");
 		   choice = input.nextInt();
-		   
+		    
 
 		   //Search by Film ID
 		   if(choice == 1) {
@@ -55,7 +61,8 @@ public class FilmQueryApp {
 			   } else {
 				   System.out.println(film);
 			   }
-		   } 
+		   }
+		   
 		   
 		   //Search for Film by Search Keyword
 		   else if (choice == 2) {
@@ -65,16 +72,16 @@ public class FilmQueryApp {
 			   List<Film> film = db.findFilmBySearchQuery(searchQuery);
 			   
 			   if(film.size() == 0) {
-				   System.out.println("\nYour Search has: " + film.size() + " results\n"); //Will notify if no Film ID found
+				   System.out.println("\nYour Search has: " + film.size() + " results\n"); //Will notify if no Film ID found (0 searches) 
 			   } else {
 				   System.out.println(film);
-				   System.out.println("\nYour Search has: " + film.size() + " results\n"); //Search Result Size
+				   System.out.println("Your Search has: " + film.size() + " results\n"); //Search Result Size
 			   }
 		   }
 		   
 		   //Exit the Menu
 		   else if (choice == 3) {
-			   System.out.println("\nBreak Loop\n");
+			   System.out.println("\nExiting...\n");
 			   break;
 		   }
 		   
@@ -82,11 +89,9 @@ public class FilmQueryApp {
 		   else {
 			   System.out.println("\nInvalid Choice\n");
 		   }
-		   
-	   } while(choice != 3);
-	   
-	   System.out.println("\nEnd Program");
-	 
-  }
+		
+		 } while(choice != 3);
+ 
+  }//startUserInterface
 
-}
+}//Class

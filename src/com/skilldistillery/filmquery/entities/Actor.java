@@ -1,5 +1,6 @@
 package com.skilldistillery.filmquery.entities;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Actor {
@@ -8,9 +9,9 @@ public class Actor {
 	private String lastName;
 	private List<Film> films;
 	
-	public Actor(int id, String firstName, String lastName) {
+	public Actor(String firstName, String lastName) {
 		super();
-		this.id = id;
+//		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}
@@ -75,11 +76,7 @@ public class Actor {
 
 	@Override
 	public String toString() {
-		return "  Actor\n"
-		        + "------------- \n" 
-				+ "ID: " + id + "\n"
-				+ "First Name: " + firstName + "\n"
-				+ "Last Name: " + lastName + "\n\n";
+		return "Actor: " + firstName + " " + lastName + "\n";
 	}
 	
 
